@@ -5,7 +5,7 @@ namespace TestingLib.Library
     // Пример реализации репозитория книг (in-memory)
     public class InMemoryBookRepository : IBookRepository
     {
-        private List<Book> _books = new List<Book>();
+        private readonly List<Book> _books = new List<Book>();
 
         public List<Book> GetAllBooks() => _books;
         public Book GetBookById(int id) => _books.FirstOrDefault(b => b.Id == id);

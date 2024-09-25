@@ -10,12 +10,20 @@ namespace UnitTesting
 {
     public class LibraryTests
     {
+        private readonly Mock<IBookRepository> mockBookRepository;
+        private readonly Mock<IUserRepository> mockUserRepository;
+
+        public LibraryTests()
+        {
+            mockBookRepository = new Mock<IBookRepository>();
+            mockUserRepository = new Mock<IUserRepository>();
+        }
+
         [Fact]
         public void BorrowBook_ShouldReturnTrue_WhenBookIsAvailable()
         {
             // Arrange
-            var mockBookRepository = new Mock<IBookRepository>();
-            var mockUserRepository = new Mock<IUserRepository>();
+            
 
             var book = new Book { Id = 1, Title = "Test Book", Author = "Author", IsBorrowed = false };
             var user = new User { Id = 1, Name = "Test User" };
@@ -38,8 +46,6 @@ namespace UnitTesting
         public void BorrowBook_ShouldReturnFalse_WhenBookIsAlreadyBorrowed()
         {
             // Arrange
-            var mockBookRepository = new Mock<IBookRepository>();
-            var mockUserRepository = new Mock<IUserRepository>();
 
             var book = new Book { Id = 1, Title = "Test Book", Author = "Author", IsBorrowed = true };
             var user = new User { Id = 1, Name = "Test User" };

@@ -3,7 +3,7 @@
     // Пример реализации репозитория пользователей (in-memory)
     public class InMemoryUserRepository : IUserRepository
     {
-        private List<User> _users = new List<User>();
+        private readonly List<User> _users = new List<User>();
 
         public List<User> GetAllUsers() => _users;
         public User GetUserById(int id) => _users.FirstOrDefault(u => u.Id == id);
