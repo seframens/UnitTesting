@@ -33,7 +33,7 @@ namespace TestingLib.Library
                 .RuleFor(b => b.Title, f => f.Random.Words(3))
                 .RuleFor(b => b.IsBorrowed, f => f.Random.Bool())
                 .RuleFor(b => b.Author, f => f.Name.FullName());
-            _books = testBooks.GenerateBetween(50, 100);
+            _books.AddRange(testBooks.GenerateBetween(50, 100));
         }
     }
 }
