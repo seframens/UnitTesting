@@ -34,6 +34,5 @@ namespace UnitTesting
             int result = _calculator.Add(a, b);
             Assert.Equal(expectedResult, result);
         }
-
     }
 }

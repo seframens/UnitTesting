@@ -27,10 +27,10 @@ namespace TestingLib.Library
             Randomizer.Seed = new Random(8675309);
 
             var bookIds = 0;
-            var testBooks = new Faker<Book>()
+            var testBooks = new Faker<Book>("ru")
                 .StrictMode(true)
                 .RuleFor(b => b.Id, f => bookIds++)
-                .RuleFor(b => b.Title, f => f.Random.Words(3))
+                .RuleFor(b => b.Title, f => String.Join(" ",f.Lorem.Words(3)))
                 .RuleFor(b => b.IsBorrowed, f => f.Random.Bool())
                 .RuleFor(b => b.Author, f => f.Name.FullName());
             _books.AddRange(testBooks.GenerateBetween(50, 100));

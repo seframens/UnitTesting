@@ -23,8 +23,6 @@ namespace UnitTesting
         public void BorrowBook_ShouldReturnTrue_WhenBookIsAvailable()
         {
             // Arrange
-            
-
             var book = new Book { Id = 1, Title = "Test Book", Author = "Author", IsBorrowed = false };
             var user = new User { Id = 1, Name = "Test User" };
 
@@ -46,7 +44,6 @@ namespace UnitTesting
         public void BorrowBook_ShouldReturnFalse_WhenBookIsAlreadyBorrowed()
         {
             // Arrange
-
             var book = new Book { Id = 1, Title = "Test Book", Author = "Author", IsBorrowed = true };
             var user = new User { Id = 1, Name = "Test User" };
 
@@ -64,6 +61,18 @@ namespace UnitTesting
             mockUserRepository.Verify(repo => repo.UpdateUser(It.IsAny<User>()), Times.Never);
         }
 
+        [Fact]
+        public void GetAllBooks_ShouldReturnListOfBooks()
+        {
+            // Arrange
+            InMemoryBookRepository bookRepository = new InMemoryBookRepository();
+            bookRepository.InitByBogus();
 
+            // Act
+            List<Book> books = bookRepository.GetAllBooks();
+
+            // Assert
+            Assert.NotNull(books);
+        }
     }
 }
