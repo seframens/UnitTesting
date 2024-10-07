@@ -8,11 +8,11 @@ namespace TestingLib.Math
 {
     public class BasicCalc
     {
+        //ТРИВИАЛЬНЫЕ МЕТОДЫ
         public int Add(int a, int b)
         {
             return a + b;
         }
-
         public int Subtract(int a, int b)
         {
             return a - b;
@@ -23,6 +23,9 @@ namespace TestingLib.Math
             return a / b;
         }
 
+        //ЗАДАНИЯ ПР_2
+
+        //Находит факториал числа
         public long Factorial(int n)
         {
             if (n < 0) throw new ArgumentOutOfRangeException();
@@ -30,6 +33,9 @@ namespace TestingLib.Math
             return Enumerable.Range(1, n).Aggregate(1, (x, y) => x * y);
         }
 
+        //ЗАДАНИЯ ЛР_6
+
+        //Находит НОД (наименьшее общее кратное) двух чисел
         public int GCD(int a, int b)
         {
             if (a < 0 || b < 0) throw new ArgumentOutOfRangeException();
@@ -37,24 +43,28 @@ namespace TestingLib.Math
             return Enumerable.Range(1, System.Math.Min(a, b)).Last(x => a % x == 0 && b % x == 0);
         }
 
+        //Находит НОК (наибольшее общее кратное) двух чисел
         public int LCM(int a, int b)
         {
             if (a < 0 || b < 0) throw new ArgumentOutOfRangeException();
             return a * b / GCD(a, b);
         }
 
+        //Находит квадратный корень числа
         public double Sqrt(double n)
         {
             if (n < 0) throw new ArgumentOutOfRangeException();
             return System.Math.Sqrt(n);
         }
 
+        //Находит логарифм числа n по основанию baseN
         public double Log(double n, double baseN)
         {
             if (n <= 0) throw new ArgumentOutOfRangeException();
             return System.Math.Log(n, baseN);
         }
 
+        //Находит корни квадратного уравнения
         public (double?, double?) SolveQuadraticEquation(double a, double b, double c)
         {
             if (a == 0)
@@ -88,6 +98,7 @@ namespace TestingLib.Math
             return sum == n;
         }
 
+        //Проверяет, является ли число простым
         public bool IsPrime(int n)
         {
             if (n < 0)

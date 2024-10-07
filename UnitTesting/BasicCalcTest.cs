@@ -34,5 +34,11 @@ namespace UnitTesting
             int result = _calculator.Add(a, b);
             Assert.Equal(expectedResult, result);
         }
+
+        [Fact]
+        public void Divide_ShouldThrowDivideByZeroException()
+        {
+            Assert.Throws<DivideByZeroException>(() => _calculator.Divide(2, 0));
+        }
     }
 }
