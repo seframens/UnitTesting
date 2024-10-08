@@ -21,6 +21,7 @@ namespace TestingLib.Shop
 
         public void CreateOrder(Order order)
         {
+            if (_orderRepository.GetOrderById(order.Id) != null) throw new ArgumentException("Order with current id already exists");
             _orderRepository.AddOrder(order);
             _notificationService.SendNotification(order.Customer.Email, $"Order {order.Id} created for customer {order.Customer.Name} total price {order.Amount}");
         }
