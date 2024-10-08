@@ -8,13 +8,28 @@ namespace TestingLib.Shop
 {
     public class ShopService
     {
-        private readonly IProductRepository _productRepository;
+        private readonly INotificationService _notificationService;
+        private readonly ICustomerRepository _customerRepository;
         private readonly IOrderRepository _orderRepository;
 
-        public ShopService(IProductRepository productRepository, IOrderRepository orderRepository)
+        public ShopService(ICustomerRepository customerRepository, IOrderRepository orderRepository, INotificationService notificationService)
         {
-            _productRepository = productRepository;
+            _customerRepository = customerRepository;
             _orderRepository = orderRepository;
+            _notificationService = notificationService;
+        }
+
+        public void CreateOrder(Order order)
+        {
+            _orderRepository.AddOrder(order);
+            _notificationService.SendNotification(order.Customer.Email, $"Order {order.Id} created for customer {order.Customer.Name} total price {order.Amount}");
+        }
+
+        public string GetCustomerInfo(int customerId)
+        {
+            var customer = _customerRepository.GetCustomerById(customerId);
+            var orders = _orderRepository.GetOrders().Where(o=>o.Customer == customer).ToList();
+            return "Customer " + customer.Name + " has " + orders.Count + " orders";
         }
     }
 }
