@@ -16,7 +16,5 @@ namespace TestingLib.Shop
             _productRepository = productRepository;
             _orderRepository = orderRepository;
         }
-        
-
     }
 }

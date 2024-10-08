@@ -23,7 +23,7 @@ namespace TestingLib.Math
             return a / b;
         }
 
-        //ЗАДАНИЯ ПР_2
+        //ЗАДАНИЯ ЛР_6
 
         //Находит факториал числа
         public long Factorial(int n)
@@ -32,8 +32,6 @@ namespace TestingLib.Math
             if (n == 0) return 1;
             return Enumerable.Range(1, n).Aggregate(1, (x, y) => x * y);
         }
-
-        //ЗАДАНИЯ ЛР_6
 
         //Находит НОД (наименьшее общее кратное) двух чисел
         public int GCD(int a, int b)
@@ -97,6 +95,8 @@ namespace TestingLib.Math
 
             return sum == n;
         }
+
+        //ЗАДАНИЕ ПР_2
 
         //Проверяет, является ли число простым
         public bool IsPrime(int n)

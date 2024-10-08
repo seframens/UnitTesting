@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestingLib.Shop
 {
-    public class Order
+    internal class Customer
     {
-        public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public Customer Customer { get; set; }
     }
 }
